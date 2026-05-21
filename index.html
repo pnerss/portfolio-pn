@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Paulo Neres</title><!-- ✏️ Votre nom -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Feuille de style -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ──────────────────────────── -->
+  <nav>
+    <div class="nav-logo"> Paulo NERES</div><!-- ✏️ Votre nom -->
+    <div class="nav-links">
+      <a href="#home">Accueil</a>
+      <a href="#about">À propos</a>
+      <a href="#skills">Compétences</a>
+      <a href="#projects">Projets</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Me contacter</a>
+  </nav>
+
+  <!-- ─── HERO ────────────────────────────────── -->
+  <section id="home">
+    <div class="hero-inner">
+      <div class="hero-tag">Disponible pour des projets</div><!-- ✏️ Votre statut actuel -->
+      <h1 class="hero-title">
+        Bonjour, je suis<br>
+        <span>Paulo Neres</span><!-- ✏️ Votre nom -->
+      </h1>
+      <p class="hero-desc">
+        Professionnel passionné par l'informatique, attiré par ce domaine depuis mon plus jeune âge'.
+        Toujours à la recherche de nouveaux défis et apprentissages.
+      </p><!-- ✏️ Votre accroche -->
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">Voir mes projets</a>
+        <a href="#contact" class="btn-secondary">Prendre contact</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">10+</div><!-- ✏️ -->
+          <div class="stat-label">Projets réalisés</div>
+        </div>
+        <div>
+          <div class="stat-num">5+</div><!-- ✏️ -->
+          <div class="stat-label">Outils maîtrisés</div>
+        </div>
+        <div>
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Implication</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── À PROPOS ─────────────────────────────── -->
+  <section id="about">
+    <div class="section-label">À propos</div>
+    <h2 class="section-title">Qui suis-je ?</h2>
+    <div class="about-grid">
+
+      <div class="about-text">
+        <!-- ✏️ Rédigez vos paragraphes de présentation ci-dessous -->
+        <p>
+          Bonjour ! Je suis Paulo Neres, excellent communicant et passionné par l'informatique, etudient
+          d'un BTS Service Informatique aux Organisations option SISR.
+          J'ai de l'expérience dans uen entreprise de communication où j'ai appris la gestion de ticketing,
+          travail en équipe.
+        </p>
+        <p>
+          Mon parcours m'a permis de développer des compétences variées, en alliant
+          toujours le travail en équipe, organisation et souci du détail.
+        </p>
+        <p>
+          J'ai comme objectif m'expecialiser dans le domaine du réseau et devenir un expert.
+        </p>
+      </div>
+
+      <div class="about-cards">
+        <div class="about-card">
+          <div class="about-icon">🎓</div>
+          <div>
+            <div class="about-card-title">BTS Service Informatique aux Organisations</div><!-- ✏️ -->
+            <div class="about-card-text">Lycée Jacques Brel<br>Solutions d'Infrastructure, Systèmes et Réseaux</div>
+          </div>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">💼</div>
+          <div>
+            <div class="about-card-title">Spécialisation</div><!-- ✏️ -->
+            <div class="about-card-text">Systéme et Réseau</div>
+          </div>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🚀</div>
+          <div>
+            <div class="about-card-title">Objectif</div><!-- ✏️ -->
+            <div class="about-card-text">Devenir Expert Reseau </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── COMPÉTENCES ──────────────────────────── -->
+  <section id="skills">
+    <div class="section-label">Compétences</div>
+    <h2 class="section-title">Ce que je sais faire</h2>
+    <p class="section-sub">
+      Les outils et compétences que j'ai développés tout au long de mon parcours.
+    </p>
+    <div class="skills-grid" id="skills-grid"></div>
+    <!-- ✏️ Les compétences sont gérées dans script.js → tableau "skills" -->
+  </section>
+
+  <!-- ─── PROJETS ───────────────────────────────── -->
+  <section id="projects">
+    <div class="section-label">Projets</div>
+    <h2 class="section-title">Réalisations phares</h2>
+    <p class="section-sub">
+      Une sélection des projets dont je suis le plus fier.
+    </p>
+    <div class="projects-grid" id="projects-grid"></div>
+    <!-- ✏️ Les projets sont gérés dans script.js → tableau "projects" -->
+  </section>
+
+  <!-- ─── CONTACT ───────────────────────────────── -->
+  <section id="contact">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Travaillons ensemble</h2>
+    <p class="section-sub">
+     Actuellement à la recherche d'une alternance, je suis disponible et motivé. Échangeons ensemble !
+    </p>
+    <div class="contact-grid">
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-detail-label">Localisation</div>
+            <div class="contact-detail-value">Lyon, France</div><!-- ✏️ -->
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-detail-label">E-mail</div>
+            <div class="contact-detail-value">pauloneres16@gmail.com</div><!-- ✏️ -->
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div>
+            <div class="contact-detail-label">LinkedIn</div>
+        <div class="contact-detail-value">
+       <a href="https://www.linkedin.com/in/paulonrs/" >
+         Paulo Neres
+  </a>
+</div>
+          </div>
+        </div>
+   ***</div>
+  </section>
+
+  <!-- ─── FOOTER ───────────────────────────────── -->
+  <footer>
+    <p>© 2026 <span>Paulo NERES</span>. Fait avec du café et beaucoup de détermination.</p><!-- ✏️ Votre nom -->
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+
+</body>
+</html>
