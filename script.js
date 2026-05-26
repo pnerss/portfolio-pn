@@ -53,7 +53,7 @@ const projects = [
     title: "Projet Devellopement",
     tags:  ["HTML", "CSS"],
     desc:  "Site créer du 0 avec html et CSS.",
-    link:  "",
+    link:  "bresil-projet.netlify.app",
   },
   {
     emoji: "📱",
