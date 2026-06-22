@@ -915,6 +915,219 @@ footer span {
 .hero-actions { animation-delay: 0.28s; }
 .hero-stats   { animation-delay: 0.36s; }
 
+/* ─── PAGE INTERNE — SITUATION PRO ──────────── */
+
+.page-hero {
+  position: relative;
+  padding-top: 140px;
+  padding-bottom: 64px;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, var(--blue-light) 0%, rgba(230,241,251,0) 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.breadcrumb {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  transition: color 0.2s, gap 0.2s;
+}
+
+.breadcrumb:hover {
+  color: var(--blue);
+  gap: 12px;
+}
+
+.page-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+
+.page-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.page-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.8rem;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+.page-title span {
+  color: var(--blue);
+}
+
+.page-lead {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+.page-content {
+  padding: 80px 10%;
+}
+
+.page-content-narrow {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.page-block {
+  margin-bottom: 64px;
+}
+
+.page-block:last-child {
+  margin-bottom: 0;
+}
+
+.page-block-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.7rem;
+  margin-bottom: 16px;
+}
+
+.page-block p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.85;
+  margin-bottom: 14px;
+}
+
+/* Grille d'outils (résumé visuel des applications utilisées) */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.tool-card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px 20px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--blue-light);
+}
+
+.tool-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+}
+
+.tool-name {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.tool-desc {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* Compétences mobilisées, en tags */
+.skills-mobilized {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--blue-light);
+  color: var(--blue-dark);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+}
+
+/* Callout / encart d'attention */
+.callout {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 20px 24px;
+  background: var(--blue-light);
+  border-radius: var(--radius-md);
+  margin-top: 24px;
+}
+
+.callout-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.callout p {
+  color: var(--blue-dark);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.page-back-cta {
+  display: flex;
+  justify-content: center;
+  padding: 0 10% 80px;
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2.1rem;
+  }
+
+  .page-hero {
+    padding-top: 110px;
+  }
+
+  .page-content {
+    padding: 56px 6%;
+  }
+}
+
 /* ─── RESPONSIVE ────────────────────────────── */
 
 @media (max-width: 768px) {
