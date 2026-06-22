@@ -96,10 +96,10 @@ const certifications = [
   },
   {
     icon: "💻",
-    title: "Compétence numérique",
-    org: "Plateforme en ligne",
-    date: "2024",
-    desc: "Formation complémentaire suivie en autonomie.",
+    title: "Introduction to Cyber Security",
+    org: "Site en ligne",
+    date: "2026",
+    desc: "Basic de la sécurié.",
   },
 ];
 
