@@ -22,7 +22,7 @@ const skills = [
   { name: "Linux", level: 50, label: "Intermédiaire", icon: "🐧" },
   { name: "Cybersécurité", level: 70, label: "Intermédiaire", icon: "🔐" },
   { name: "HTML", level: 60, label: "Intermédiaire", icon: "💻" },
-  { name: "Compétence 6", level: 65, label: "Intermédiaire", icon: "⚙️" },
+  { name: "Anglais", level: 65, label: "Intermédiaire", icon: "🇺🇸" },
 ];
 
 /* ─────────────────────────────────────────────
