@@ -1,7 +1,7 @@
 /* ============================================
    PORTFOLIO — FEUILLE DE STYLE PRINCIPALE
-   Auteur  : Jean Dupont
-   Version : 1.0
+   Auteur  : Paulo Neres
+   Version : 2.0 — inspiré de DeveloperFolio
    ============================================ */
 
 /* ─── RESET & BASE ─────────────────────────── */
@@ -28,6 +28,10 @@
   --radius-md:  12px;
   --radius-lg:  16px;
   --radius-pill:40px;
+
+  --shadow-sm: 0 4px 14px rgba(12, 68, 124, 0.06);
+  --shadow-md: 0 12px 32px rgba(55, 138, 221, 0.12);
+  --shadow-lg: 0 20px 48px rgba(12, 68, 124, 0.14);
 }
 
 html {
@@ -40,6 +44,7 @@ body {
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
+  overflow-x: hidden;
 }
 
 a {
@@ -47,7 +52,12 @@ a {
   color: inherit;
 }
 
-/* ─── NAVIGATION ────────────────────────────── */
+::selection {
+  background: var(--blue);
+  color: #fff;
+}
+
+/* ─── NAVIGATION (effet headroom) ───────────── */
 
 nav {
   position: fixed;
@@ -63,6 +73,15 @@ nav {
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+nav.nav-hidden {
+  transform: translateY(-100%);
+}
+
+nav.nav-scrolled {
+  box-shadow: var(--shadow-sm);
 }
 
 .nav-logo {
@@ -78,14 +97,31 @@ nav {
 }
 
 .nav-links a {
+  position: relative;
   font-size: 14px;
   font-weight: 400;
   color: var(--text-muted);
   transition: color 0.2s;
+  padding-bottom: 4px;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--blue);
+  transition: width 0.25s ease;
 }
 
 .nav-links a:hover {
   color: var(--blue);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 .nav-cta {
@@ -95,11 +131,13 @@ nav {
   font-size: 13px;
   font-weight: 500;
   border-radius: var(--radius-pill);
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
 }
 
 .nav-cta:hover {
   background: var(--blue-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
 /* ─── SECTIONS — STRUCTURE COMMUNE ─────────── */
@@ -108,13 +146,30 @@ section {
   padding: 96px 10%;
 }
 
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.section-eyebrow-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blue-light);
+  border-radius: 50%;
+  font-size: 14px;
+}
+
 .section-label {
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--blue);
-  margin-bottom: 12px;
 }
 
 .section-title {
@@ -132,23 +187,53 @@ section {
   line-height: 1.75;
 }
 
+/* Révélation au scroll, appliquée via JS */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ─── HERO ──────────────────────────────────── */
 
 #home {
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   padding-top: 120px;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+#home::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, var(--blue-light) 0%, rgba(230,241,251,0) 70%);
+  border-radius: 50%;
+  z-index: 0;
 }
 
 .hero-inner {
+  position: relative;
+  z-index: 1;
   max-width: 680px;
 }
 
 .hero-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 6px 14px;
   background: var(--blue-light);
   color: var(--blue-dark);
@@ -156,6 +241,14 @@ section {
   font-weight: 500;
   border-radius: var(--radius-pill);
   margin-bottom: 28px;
+}
+
+.hero-tag .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #36c275;
+  animation: pulse 1.8s ease infinite;
 }
 
 .hero-title {
@@ -192,12 +285,13 @@ section {
   font-size: 14px;
   font-weight: 500;
   border-radius: var(--radius-pill);
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
 }
 
 .btn-primary:hover {
   background: var(--blue-dark);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
@@ -214,7 +308,7 @@ section {
 .btn-secondary:hover {
   border-color: var(--blue);
   color: var(--blue);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .hero-stats {
@@ -235,6 +329,12 @@ section {
   font-size: 13px;
   color: var(--text-muted);
   margin-top: 2px;
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(54, 194, 117, 0.5); }
+  70%  { box-shadow: 0 0 0 6px rgba(54, 194, 117, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(54, 194, 117, 0); }
 }
 
 /* ─── À PROPOS ──────────────────────────────── */
@@ -272,12 +372,25 @@ section {
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.about-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--blue-light);
 }
 
 .about-icon {
-  font-size: 20px;
-  margin-top: 2px;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  background: var(--blue-light);
+  border-radius: var(--radius-sm);
 }
 
 .about-card-title {
@@ -292,6 +405,168 @@ section {
   line-height: 1.6;
 }
 
+/* ─── PARCOURS SCOLAIRE (timeline) ──────────── */
+
+#parcours {
+  background: var(--bg);
+}
+
+.timeline {
+  position: relative;
+  margin-top: 48px;
+  padding-left: 32px;
+  border-left: 2px solid var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -41px;
+  top: 2px;
+  width: 18px;
+  height: 18px;
+  background: var(--bg);
+  border: 3px solid var(--blue);
+  border-radius: 50%;
+}
+
+.timeline-item.is-current .timeline-dot {
+  background: var(--blue);
+  box-shadow: 0 0 0 4px var(--blue-light);
+}
+
+.timeline-period {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+
+.timeline-card {
+  padding: 20px 24px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.timeline-item.is-current .timeline-card {
+  border-color: var(--blue-light);
+  background: var(--blue-light);
+}
+
+.timeline-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.timeline-title {
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.timeline-place {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.timeline-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.timeline-badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--bg);
+  color: var(--blue-dark);
+  border-radius: 20px;
+}
+
+/* ─── FORMATIONS COMPLÉMENTAIRES ─────────────── */
+
+#formations {
+  background: var(--bg-soft);
+}
+
+.certif-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.certif-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 22px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.certif-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--blue-light);
+}
+
+.certif-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  background: var(--blue-light);
+  border-radius: var(--radius-sm);
+}
+
+.certif-title {
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.certif-org {
+  font-size: 12px;
+  color: var(--blue-dark);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.certif-date {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.certif-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
 /* ─── COMPÉTENCES ───────────────────────────── */
 
 #skills {
@@ -300,31 +575,50 @@ section {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 16px;
   margin-top: 48px;
 }
 
 .skill-card {
-  padding: 20px;
+  padding: 22px;
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  transition: border-color 0.2s, transform 0.15s;
+  transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
 }
 
 .skill-card:hover {
   border-color: var(--blue);
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.skill-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.skill-icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  background: var(--blue-light);
+  border-radius: 50%;
 }
 
 .skill-name {
   font-weight: 500;
   font-size: 14px;
-  margin-bottom: 10px;
 }
 
 .skill-bar {
-  height: 4px;
+  height: 5px;
   background: var(--border);
   border-radius: 4px;
   overflow: hidden;
@@ -333,7 +627,7 @@ section {
 .skill-fill {
   height: 100%;
   width: 0%;
-  background: var(--blue);
+  background: linear-gradient(90deg, var(--blue), var(--blue-dark));
   border-radius: 4px;
   transition: width 1s ease;
 }
@@ -341,7 +635,7 @@ section {
 .skill-level {
   font-size: 12px;
   color: var(--text-muted);
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 /* ─── PROJETS ───────────────────────────────── */
@@ -362,12 +656,12 @@ section {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.25s, box-shadow 0.25s;
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(55, 138, 221, 0.1);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
 }
 
 .project-thumb {
@@ -376,6 +670,15 @@ section {
   align-items: center;
   justify-content: center;
   font-size: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 60%, rgba(0,0,0,0.04) 100%);
 }
 
 .project-body {
@@ -412,14 +715,18 @@ section {
 }
 
 .project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 13px;
   font-weight: 500;
   color: var(--blue);
-  transition: color 0.2s;
+  transition: color 0.2s, gap 0.2s;
 }
 
 .project-link:hover {
   color: var(--blue-dark);
+  gap: 10px;
 }
 
 /* ─── CONTACT ───────────────────────────────── */
@@ -447,6 +754,14 @@ section {
   display: flex;
   align-items: center;
   gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.contact-item:hover {
+  background: var(--bg-soft);
+  transform: translateX(4px);
 }
 
 .contact-icon {
@@ -470,6 +785,10 @@ section {
 .contact-detail-value {
   font-size: 14px;
   font-weight: 500;
+}
+
+.contact-detail-value a:hover {
+  color: var(--blue);
 }
 
 /* ─── FORMULAIRE ────────────────────────────── */
@@ -515,11 +834,12 @@ form button {
   border: none;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.15s;
 }
 
 form button:hover {
   background: var(--blue-dark);
+  transform: translateY(-1px);
 }
 
 /* ─── FOOTER ────────────────────────────────── */
@@ -535,6 +855,41 @@ footer {
 footer span {
   color: var(--blue);
   font-weight: 500;
+}
+
+/* ─── BOUTON RETOUR EN HAUT ─────────────────── */
+
+.back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blue);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 18px;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.25s, transform 0.25s, background 0.2s;
+  z-index: 90;
+  border: none;
+  cursor: pointer;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--blue-dark);
 }
 
 /* ─── ANIMATIONS ────────────────────────────── */
@@ -584,5 +939,12 @@ footer span {
   .hero-stats {
     flex-wrap: wrap;
     gap: 24px;
+  }
+
+  .back-to-top {
+    bottom: 18px;
+    right: 18px;
+    width: 40px;
+    height: 40px;
   }
 }
