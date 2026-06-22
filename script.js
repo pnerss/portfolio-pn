@@ -17,10 +17,10 @@
    ───────────────────────────────────────────── */
 
 const skills = [
-  { name: "Adressage IP", level: 80, label: "Expert", icon: "🌐" },
-  { name: "Dépannage", level: 80, label: "Avancé", icon: "🛠️" },
+  { name: "Adressage IP", level: 60, label: "Intermédiaire", icon: "🌐" },
+  { name: "Dépannage", level: 70, label: "Avancé", icon: "🛠️" },
   { name: "Linux", level: 50, label: "Intermédiaire", icon: "🐧" },
-  { name: "Cybersécurité", level: 70, label: "Intermédiaire", icon: "🔐" },
+  { name: "Cybersécurité", level: 60, label: "Intermédiaire", icon: "🔐" },
   { name: "HTML", level: 60, label: "Intermédiaire", icon: "💻" },
   { name: "Anglais", level: 65, label: "Intermédiaire", icon: "🇺🇸" },
 ];
