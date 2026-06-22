@@ -18,11 +18,11 @@
 
 const skills = [
   { name: "Adressage IP", level: 80, label: "Expert", icon: "🌐" },
-  { name: "Dépannage N2", level: 80, label: "Avancé", icon: "🛠️" },
+  { name: "Dépannage", level: 80, label: "Avancé", icon: "🛠️" },
   { name: "Linux", level: 50, label: "Intermédiaire", icon: "🐧" },
   { name: "Cybersécurité", level: 70, label: "Intermédiaire", icon: "🔐" },
   { name: "HTML", level: 60, label: "Intermédiaire", icon: "💻" },
-  /* { name: "Compétence 6", level: 65, label: "Intermédiaire", icon: "⚙️" }, */
+  { name: "Compétence 6", level: 65, label: "Intermédiaire", icon: "⚙️" },
 ];
 
 /* ─────────────────────────────────────────────
@@ -59,10 +59,10 @@ const projects = [
   {
     emoji: "📱",
     color: "#FAEEDA",
-    title: "Situation Professionnelle",
-    tags: ["Support Informatique", "xxx"],
-    desc: "Situation vécue pendant mon stage.",
-    link: "#",
+    title: "Onboarding IT — Capgemini",
+    tags: ["Support Informatique", "Stage"],
+    desc: "Accompagnement de nouveaux collaborateurs dans la configuration de leur poste de travail.",
+    link: "situation-pro.html",
   },
 ];
 
@@ -96,9 +96,9 @@ const certifications = [
   },
   {
     icon: "💻",
-    title: "Introduction to Cyber Security",
-    org: "TryToHackMe",
-    date: "2026",
+    title: "Compétence numérique",
+    org: "Plateforme en ligne",
+    date: "2024",
     desc: "Formation complémentaire suivie en autonomie.",
   },
 ];
@@ -307,4 +307,3 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeadroomNav();
   initBackToTop();
 });
-
