@@ -96,7 +96,7 @@ const certifications = [
   },
   {
     icon: "💻",
-    title: "Compétence numérique",
+    title: "Introduction to Cyber Security",
     org: "TryToHackMe",
     date: "2026",
     desc: "Formation complémentaire suivie en autonomie.",
