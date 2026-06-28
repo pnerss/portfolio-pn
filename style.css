@@ -57,7 +57,7 @@ a {
   color: #fff;
 }
 
-/* ─── NAVIGATION (effet headroom) ───────────── */
+/* ─── NAVIGATION (toujours fixe et visible) ─── */
 
 nav {
   position: fixed;
@@ -73,11 +73,7 @@ nav {
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-nav.nav-hidden {
-  transform: translateY(-100%);
+  transition: box-shadow 0.35s ease;
 }
 
 nav.nav-scrolled {
@@ -1112,6 +1108,31 @@ footer span {
   display: flex;
   justify-content: center;
   padding: 0 10% 80px;
+}
+
+/* CTA externe (ex: voir le site en ligne) à l'intérieur des blocs de page */
+.external-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 13px 26px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.external-cta:hover {
+  background: var(--blue-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.external-cta .icon {
+  font-size: 13px;
 }
 
 @media (max-width: 768px) {
