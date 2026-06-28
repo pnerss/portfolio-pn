@@ -1,4 +1,4 @@
-/* ============================================
+/* ==========
    PORTFOLIO — SCRIPT PRINCIPAL
    Auteur  : Paulo Neres
    Version : 2.0 — inspiré de DeveloperFolio
