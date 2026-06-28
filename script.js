@@ -43,10 +43,10 @@ const projects = [
   {
     emoji: "📊",
     color: "#E6F1FB",
-    title: "Projet Réseau",
-    tags: ["ITop", "Linux"],
-    desc: "Installation.",
-    link: "#",
+    title: "Veille Techno — Docker Networking",
+    tags: ["Docker", "Réseau"],
+    desc: "Comment les containers communiquent : bridge, host et overlay.",
+    link: "veille-docker-networking.html",
   },
   {
     emoji: "🇧🇷",
