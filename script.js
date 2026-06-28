@@ -59,7 +59,7 @@ const projects = [
   {
     emoji: "📱",
     color: "#FAEEDA",
-    title: "Onboarding IT — Capgemini",
+    title: "Stage — Capgemini",
     tags: ["Support Informatique", "Stage"],
     desc: "Accompagnement de nouveaux collaborateurs dans la configuration de leur poste de travail.",
     link: "situation-pro.html",
