@@ -54,7 +54,7 @@ const projects = [
     title: "Projet Développement",
     tags: ["HTML", "CSS"],
     desc: "Site créé de zéro avec HTML et CSS.",
-    link: "https://bresil-projet.netlify.app",
+    link: "projet-bresil.html",
   },
   {
     emoji: "📱",
@@ -140,6 +140,11 @@ function renderProjects() {
       .map((t) => `<span class="tag">${t}</span>`)
       .join("");
 
+    const isExternal = /^https?:\/\//i.test(link);
+    const linkAttrs = isExternal
+      ? `target="_blank" rel="noopener noreferrer"`
+      : "";
+
     const card = document.createElement("div");
     card.className = "project-card reveal";
     card.innerHTML = `
@@ -148,7 +153,7 @@ function renderProjects() {
         <div class="project-tags">${tagsHTML}</div>
         <div class="project-title">${title}</div>
         <div class="project-desc">${desc}</div>
-        <a href="${link}" class="project-link">Voir le projet →</a>
+        <a href="${link}" class="project-link" ${linkAttrs}>Voir le projet →</a>
       </div>
     `;
     grid.appendChild(card);
@@ -247,26 +252,15 @@ function markRevealTargets() {
   });
 }
 
-/** Navbar façon "headroom" : se cache en descendant, réapparaît en remontant */
-function initHeadroomNav() {
+/** Navbar fixe : ajoute juste une ombre légère après un petit scroll */
+function initFixedNav() {
   const nav = document.querySelector("nav");
   if (!nav) return;
 
-  let lastScrollY = window.scrollY;
   let ticking = false;
 
   function onScroll() {
-    const currentScrollY = window.scrollY;
-
-    nav.classList.toggle("nav-scrolled", currentScrollY > 8);
-
-    if (currentScrollY > lastScrollY && currentScrollY > 120) {
-      nav.classList.add("nav-hidden");
-    } else {
-      nav.classList.remove("nav-hidden");
-    }
-
-    lastScrollY = currentScrollY;
+    nav.classList.toggle("nav-scrolled", window.scrollY > 8);
     ticking = false;
   }
 
@@ -304,6 +298,6 @@ document.addEventListener("DOMContentLoaded", () => {
   markRevealTargets();
   animateSkillBars();
   initRevealOnScroll();
-  initHeadroomNav();
+  initFixedNav();
   initBackToTop();
 });
